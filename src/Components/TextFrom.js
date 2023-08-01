@@ -4,9 +4,6 @@ export default function TextFrom(props) {
     
     const [text, setText] = useState("");
     
-    const isbtnempty = e => {
-    }
-    
     const handleUpperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
@@ -33,9 +30,6 @@ export default function TextFrom(props) {
         let newText = "";
         setText(newText);   
         props.showAlert("Text Cleared", "success");
-        if(newText === ""){
-            props.showAlert("Textbox is already empty..", "danger");
-        }
     }
     
     const handleCopy = () => {
