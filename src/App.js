@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import './App.css';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 import TextFrom from './Components/TextFrom';
 import About from './Components/About';
 import Alert from './Components/Alert';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Contact from './Components/Contact';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App(props) {
 
@@ -23,14 +22,14 @@ function App(props) {
     }, 1800);
   }
 
-  const bgchange= () => {
+  const bgchange = () => {
     document.body.classList.add("body-light");
   }
-  
+
   bgchange();
-  
+
   const toggleMode = () => {
-    if(mode === "light"){
+    if (mode === "light") {
       setmode("dark");
       document.body.style.background = "linear-gradient(41deg, rgba(128,128,128,1) 50%, rgba(0,0,0,1) 50%)";
       document.body.style.color = "white";
@@ -48,12 +47,12 @@ function App(props) {
 
   return (
     <React.Fragment>
-      <Router>      
+      <Router>
         <Navbar mode={mode} toggleMode={toggleMode} title="TextUtils" home="Home" about="About" contact="Contact Us" />
-        <Alert alert={alert}/>
+        <Alert alert={alert} />
         <div className='container my-3'>
           <Routes>
-          <Route
+            <Route
               path="/home"
               element={
                 <TextFrom
@@ -69,7 +68,7 @@ function App(props) {
                 />
               }
             />
-          <Route
+            <Route
               path="/"
               element={
                 <TextFrom
@@ -85,8 +84,8 @@ function App(props) {
                 />
               }
             />
-            <Route exact path="/about" element={<About mode={mode}/>} />
-            <Route exact path="/contact" element={<Contact mode={mode}/>} />
+            <Route exact path="/about" element={<About mode={mode} />} />
+            <Route exact path="/contact" element={<Contact mode={mode} />} />
           </Routes>
         </div>
       </Router>
