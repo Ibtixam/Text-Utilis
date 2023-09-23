@@ -48,7 +48,7 @@ function App(props) {
   return (
     <React.Fragment>
       <Router>
-        <Navbar mode={mode} toggleMode={toggleMode} title="TextUtils" home="Home" about="About" contact="Contact Us" />
+        <Navbar mode={mode} toggleMode={toggleMode} title="TextUtilz" home="Home" about="About" contact="Contact Us" />
         <Alert alert={alert} />
         <div className='container my-3'>
           <Routes>
