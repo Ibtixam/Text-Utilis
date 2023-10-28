@@ -1,56 +1,60 @@
-import React, { useState } from 'react';
-import Navbar from './Components/Navbar';
-import TextFrom from './Components/TextFrom';
-import About from './Components/About';
-import Alert from './Components/Alert';
-import Contact from './Components/Contact';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Navbar from "./Components/Navbar";
+import TextFrom from "./Components/TextFrom";
+import About from "./Components/About";
+import Alert from "./Components/Alert";
+import Contact from "./Components/Contact";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App(props) {
-
+const App = () => {
   const [mode, setmode] = useState("light");
   const [alert, setAlert] = useState(false);
-
 
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
-      type: type
+      type: type,
     });
     setTimeout(() => {
       setAlert(null);
     }, 1800);
-  }
+  };
 
-  const bgchange = () => {
+  useEffect(() => {
     document.body.classList.add("body-light");
-  }
-
-  bgchange();
+  }, []);
 
   const toggleMode = () => {
     if (mode === "light") {
       setmode("dark");
-      document.body.style.background = "linear-gradient(41deg, rgba(128,128,128,1) 50%, rgba(0,0,0,1) 50%)";
+      document.body.style.background =
+        "linear-gradient(41deg, rgba(128,128,128,1) 50%, rgba(0,0,0,1) 50%)";
       document.body.style.color = "white";
       document.documentElement.classList.add("dark-mode");
       showAlert("Dark mode has been Enabled", "success");
     } else {
       setmode("light");
-      document.body.style.background = 'linear-gradient(41deg, rgba(241,241,241,1) 50%, rgba(158,232,255,1) 50%)';
+      document.body.style.background =
+        "linear-gradient(41deg, rgba(241,241,241,1) 50%, rgba(158,232,255,1) 50%)";
       document.body.style.color = "black";
       document.documentElement.classList.remove("dark-mode");
       showAlert("Light mode has been Enabled", "success");
     }
-  }
-
+  };
 
   return (
     <React.Fragment>
       <Router>
-        <Navbar mode={mode} toggleMode={toggleMode} title="TextUtilz" home="Home" about="About" contact="Contact Us" />
+        <Navbar
+          mode={mode}
+          toggleMode={toggleMode}
+          title="TextUtilz"
+          home="Home"
+          about="About"
+          contact="Contact Us"
+        />
         <Alert alert={alert} />
-        <div className='container my-3'>
+        <div className="container my-3">
           <Routes>
             <Route
               path="/home"
@@ -91,6 +95,6 @@ function App(props) {
       </Router>
     </React.Fragment>
   );
-}
+};
 
 export default App;
