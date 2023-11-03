@@ -27,24 +27,6 @@
   background: linear-gradient(41deg, rgba(241, 241, 241, 1) 50%, rgba(158, 232, 255, 1) 50%);
 }
 
-.contact {
-  height: 76vh;
-}
-
-.about {
-  height: 69vh;
-}
-
-.text-form {
-  height: auto;
-}
-
-@media screen and (max-width: 480px) {
-  .contact {
-    height: 100vh;
-  }
-
-  .about {
-    height: 100vh;
-  }
+body {
+  min-height: 100vh;
 }
