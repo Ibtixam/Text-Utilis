@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
 export default function About({ mode }) {
   let myStyle = {
-    color: mode === "light" ? "black" : "white",
-    backgroundColor: mode === "dark" ? "black" : "white",
-    border: "1px solid white",
-    borderColor: mode === "dark" ? "white" : "none",
+    color: mode === 'light' ? 'black' : 'white',
+    backgroundColor: mode === 'dark' ? 'black' : 'white',
+    border: '1px solid white',
+    borderColor: mode === 'dark' ? 'white' : 'none',
   };
 
   return (
     <React.Fragment>
-      <div className="container about" style={{ marginTop: "60px" }}>
+      <div className="container about" style={{ marginTop: '60px' }}>
         <h1
           className="my-3 text-center"
           style={{
-            color: mode === "light" ? "black" : "white",
+            color: mode === 'light' ? 'black' : 'white',
           }}
         >
           About Us

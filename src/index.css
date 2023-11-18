@@ -24,7 +24,11 @@
 }
 
 .body-light {
-  background: linear-gradient(41deg, rgba(241, 241, 241, 1) 50%, rgba(158, 232, 255, 1) 50%);
+  background: linear-gradient(
+    41deg,
+    rgba(241, 241, 241, 1) 50%,
+    rgba(158, 232, 255, 1) 50%
+  );
 }
 
 body {

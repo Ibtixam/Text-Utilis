@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Alert = ({ alert }) => {
   const capitalize = (word) => {
@@ -9,8 +9,8 @@ const Alert = ({ alert }) => {
   return (
     <div
       style={{
-        height: "60px",
-        marginTop: "58px",
+        height: '60px',
+        marginTop: '58px',
       }}
     >
       {alert && (
