@@ -10,7 +10,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
     if (!newText) {
       Swal.fire({
         title: 'Error!',
-        text: 'Please write anything to uppercase',
+        text: 'Please write anything to convert uppercase',
         icon: 'error',
         confirmButtonText: 'Ok',
       });
@@ -25,7 +25,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
     if (!newText) {
       Swal.fire({
         title: 'Error!',
-        text: 'Please write anything to lowercase',
+        text: 'Please write anything to convert lowercase',
         icon: 'error',
         confirmButtonText: 'Ok',
       });
@@ -35,8 +35,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
   };
 
   const handleClear = () => {
-    let newText = '';
-    setText(newText);
+    setText('');
     showAlert('Text Cleared', 'success');
   };
 
@@ -61,7 +60,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
     if (!newText) {
       Swal.fire({
         title: 'Error!',
-        text: 'Please write anything for remove spaces...',
+        text: 'Please write anything to remove spaces...',
         icon: 'error',
         confirmButtonText: 'Ok',
       });
