@@ -69,6 +69,20 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
     }
   };
 
+  const handleTextToSpeech = () => {
+    let textarea = document.getElementById('exampleFormControlTextarea1').value;
+    const utterance = new SpeechSynthesisUtterance(textarea);
+    speechSynthesis.speak(utterance);
+    if (!text) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please write anything to speak the speech...',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="container text-form" style={{ marginTop: '50px' }}>
@@ -101,6 +115,12 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           onClick={handleRemoveExtraSpaces}
         >
           {props.ExtraSpace}
+        </button>
+        <button
+          className="btn btn-primary mx-1 my-2"
+          onClick={handleTextToSpeech}
+        >
+          Listen Text
         </button>
       </div>
       <div className="container my-4">
