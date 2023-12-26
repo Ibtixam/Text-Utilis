@@ -107,11 +107,17 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
         <button className="btn btn-primary my-3 mx-1" onClick={handleUpperCase}>
           {props.UpperCase}
         </button>
+        <button className="btn btn-danger mx-1 my-2" onClick={handleClear}>
+          {props.Clear}
+        </button>
         <button className="btn btn-primary mx-1 my-2" onClick={handleLowerCase}>
           {props.LowerCase}
         </button>
-        <button className="btn btn-danger mx-1 my-2" onClick={handleClear}>
-          {props.Clear}
+        <button
+          className="btn btn-primary mx-1 my-2"
+          onClick={handleTextToSpeech}
+        >
+          Listen Text
         </button>
         <button className="btn btn-success mx-1 my-2" onClick={handleCopy}>
           {props.Copy}
@@ -121,12 +127,6 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           onClick={handleRemoveExtraSpaces}
         >
           {props.ExtraSpace}
-        </button>
-        <button
-          className="btn btn-primary mx-1 my-2"
-          onClick={handleTextToSpeech}
-        >
-          Listen Text
         </button>
       </div>
       <div className="container my-4">
