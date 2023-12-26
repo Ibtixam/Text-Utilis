@@ -91,8 +91,8 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container text-form" style={{ marginTop: '50px' }}>
-        <h1 className="text-center">{props.heading}</h1>
+      <div className="container text-form" style={{ marginTop: '10px' }}>
+        <h1 className="text-center fs-2">Text Converter and Analysis</h1>
         <textarea
           className="form-control"
           onChange={({ target }) => setText(target.value)}
@@ -105,13 +105,16 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           }}
         ></textarea>
         <button className="btn btn-primary my-3 mx-1" onClick={handleUpperCase}>
-          {props.UpperCase}
-        </button>
-        <button className="btn btn-danger mx-1 my-2" onClick={handleClear}>
-          {props.Clear}
+          UpperCase Text
         </button>
         <button className="btn btn-primary mx-1 my-2" onClick={handleLowerCase}>
-          {props.LowerCase}
+          LowerCase Text
+        </button>
+        <button
+          className="btn btn-primary mx-1 my-2"
+          onClick={handleRemoveExtraSpaces}
+        >
+          Remove Extra Space
         </button>
         <button
           className="btn btn-primary mx-1 my-2"
@@ -120,17 +123,14 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           Listen Text
         </button>
         <button className="btn btn-success mx-1 my-2" onClick={handleCopy}>
-          {props.Copy}
+          Copy to Clipboard
         </button>
-        <button
-          className="btn btn-primary mx-1 my-2"
-          onClick={handleRemoveExtraSpaces}
-        >
-          {props.ExtraSpace}
+        <button className="btn btn-danger mx-1 my-2" onClick={handleClear}>
+          Clear Text
         </button>
       </div>
       <div className="container my-4">
-        <h1>Summary Of Your Text</h1>
+        <h1 className="fs-2">Summary Of Your Text</h1>
         <p>
           Number of words:{' '}
           {text.trim() === '' ? 0 : text.trim().split(/\s+/).length}

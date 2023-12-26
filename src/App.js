@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
@@ -62,13 +61,7 @@ const App = () => {
               element={
                 <TextFrom
                   showAlert={showAlert}
-                  heading="Text Converter and Analysis"
                   mode={mode}
-                  UpperCase="Convert UpperCase"
-                  LowerCase="Convert LowerCase"
-                  Clear="Clear Text"
-                  Copy="Copy To Clipboard"
-                  ExtraSpace="Remove Extra Spaces"
                   alert={alert}
                 />
               }
