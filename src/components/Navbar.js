@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
-const Navbar = (props) => {
+const Navbar = ({ mode, toggleMode }) => {
   const [navStyle] = useState({
     color: '#06B6D4',
     fontSize: '22px',
     fontWeight: '900',
   });
-
   const location = useLocation();
 
   return (
     <React.Fragment>
       <nav
         className="navbar navbar-expand-lg bg-body-tertiary fixed-top"
-        data-bs-theme={`${props.mode}`}
+        data-bs-theme={`${mode}`}
       >
         <div className="container-fluid">
           <Link className="navbar-brand" style={navStyle} to="/">
-            {props.title}
+            TextUtilz
           </Link>
           <button
             className="navbar-toggler"
@@ -41,7 +40,7 @@ const Navbar = (props) => {
                   aria-current="page"
                   to="/"
                 >
-                  {props.home}
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -51,7 +50,7 @@ const Navbar = (props) => {
                   }`}
                   to="/about"
                 >
-                  {props.about}
+                  About
                 </Link>
               </li>
               <li className="nav-item">
@@ -61,22 +60,23 @@ const Navbar = (props) => {
                   }`}
                   to="/contact"
                 >
-                  {props.contact}
+                  Contact Us
                 </Link>
               </li>
             </ul>
             <div className="form-check form-switch form-check-reverse">
               <label
                 className={`form-check-label text-${
-                  props.mode === 'light' ? 'dark' : 'light'
+                  mode === 'light' ? 'dark' : 'light'
                 }`}
                 htmlFor="flexSwitchCheckDefault"
-              >{`Enable ${props.mode} Mode`}</label>
+              >{`${mode === 'light' ? 'Enable' : 'Disable'} Dark Mode`}</label>
               <input
                 className="form-check-input"
                 type="checkbox"
                 id="flexSwitchCheckDefault"
-                onClick={props.toggleMode}
+                onChange={toggleMode}
+                checked={mode === 'dark' ? true : false}
               />
             </div>
           </div>

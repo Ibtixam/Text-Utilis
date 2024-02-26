@@ -20,12 +20,9 @@
   background: black;
 }
 
-.body-light {
-  background: linear-gradient(
-    41deg,
-    rgba(241, 241, 241, 1) 50%,
-    rgba(158, 232, 255, 1) 50%
-  );
+.theme-light {
+  background: linear-gradient(41deg, rgba(241, 241, 241, 1) 50%, rgba(158, 232, 255, 1) 50%) !important;
+  color: black !important;
 }
 
 body {

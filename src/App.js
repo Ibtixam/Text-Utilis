@@ -7,7 +7,8 @@ import Contact from './components/Contact';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
-  const [mode, setmode] = useState('light');
+  const storedMode = localStorage.getItem('theme');
+  const [mode, setmode] = useState(storedMode);
   const [alert, setAlert] = useState(false);
 
   const showAlert = (message, type) => {
@@ -21,65 +22,45 @@ const App = () => {
   };
 
   useEffect(() => {
-    document.body.classList.add('body-light');
-  }, []);
+    if (mode === 'light') {
+      document.body.classList.add('theme-light');
+    } else {
+      document.body.classList.remove('theme-light');
+      document.body.style.color = 'white';
+      document.body.style.background =
+        'linear-gradient(41deg, rgba(128,128,128,1) 50%, rgba(0,0,0,1) 50%)';
+    }
+  }, [mode]);
 
   const toggleMode = () => {
     if (mode === 'light') {
       setmode('dark');
-      document.body.style.background =
-        'linear-gradient(41deg, rgba(128,128,128,1) 50%, rgba(0,0,0,1) 50%)';
-      document.body.style.color = 'white';
-      document.documentElement.classList.add('dark-mode');
       showAlert('Dark mode has been Enabled', 'success');
+      localStorage.setItem('theme', 'dark');
     } else {
       setmode('light');
-      document.body.style.background =
-        'linear-gradient(41deg, rgba(241,241,241,1) 50%, rgba(158,232,255,1) 50%)';
-      document.body.style.color = 'black';
-      document.documentElement.classList.remove('dark-mode');
       showAlert('Light mode has been Enabled', 'success');
+      localStorage.setItem('theme', 'light');
     }
   };
 
   return (
-    <React.Fragment>
+    <>
       <Router>
-        <Navbar
-          mode={mode}
-          toggleMode={toggleMode}
-          title="TextUtilz"
-          home="Home"
-          about="About"
-          contact="Contact Us"
-        />
+        <Navbar mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
             <Route
               path="/home"
               element={
-                <TextFrom
-                  showAlert={showAlert}
-                  mode={mode}
-                  alert={alert}
-                />
+                <TextFrom showAlert={showAlert} mode={mode} alert={alert} />
               }
             />
             <Route
               path="/"
               element={
-                <TextFrom
-                  showAlert={showAlert}
-                  heading="Text Converter and Analysis"
-                  mode={mode}
-                  UpperCase="Convert UpperCase"
-                  LowerCase="Convert LowerCase"
-                  Clear="Clear Text"
-                  Copy="Copy To Clipboard"
-                  ExtraSpace="Remove Extra Spaces"
-                  alert={alert}
-                />
+                <TextFrom showAlert={showAlert} mode={mode} alert={alert} />
               }
             />
             <Route exact path="/about" element={<About mode={mode} />} />
@@ -87,7 +68,7 @@ const App = () => {
           </Routes>
         </div>
       </Router>
-    </React.Fragment>
+    </>
   );
 };
 
