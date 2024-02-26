@@ -11,6 +11,8 @@ const Alert = ({ alert }) => {
       style={{
         height: '60px',
         marginTop: '58px',
+        position: 'sticky',
+        top: '58px',
       }}
     >
       {alert && (
