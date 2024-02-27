@@ -1,7 +1,9 @@
-import React from 'react';
+interface AlertPropTypes {
+  alert: { msg: string; type: string } | null;
+}
 
-const Alert = ({ alert }) => {
-  const capitalize = (word) => {
+const Alert: React.FC<AlertPropTypes> = ({ alert }) => {
+  const capitalize = (word: string) => {
     const lower = word.toLowerCase();
     return lower.charAt(0).toUpperCase() + lower.slice(1);
   };

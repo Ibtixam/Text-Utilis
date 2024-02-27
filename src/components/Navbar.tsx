@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-const Navbar = ({ mode, toggleMode }) => {
+
+interface NavbarPropTypes {
+  mode?: string;
+  toggleMode?: () => void;
+}
+
+const Navbar: FC<NavbarPropTypes> = ({ mode, toggleMode }) => {
   const [navStyle] = useState({
     color: '#06B6D4',
     fontSize: '22px',
@@ -84,22 +89,6 @@ const Navbar = ({ mode, toggleMode }) => {
       </nav>
     </React.Fragment>
   );
-};
-
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
-  home: PropTypes.string.isRequired,
-  services: PropTypes.string.isRequired,
-  contact: PropTypes.string.isRequired,
-};
-
-Navbar.defaultProps = {
-  title: 'title is here',
-  home: 'Home',
-  about: 'About',
-  services: 'Services',
-  contact: 'Contact Us',
 };
 
 export default Navbar;

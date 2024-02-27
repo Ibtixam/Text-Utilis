@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const About = ({ mode }) => {
+const About: FC<{ mode: string }> = ({ mode }) => {
   const myStyle = {
     color: mode === 'light' ? 'black' : 'white',
     backgroundColor: mode === 'dark' ? 'black' : 'white',

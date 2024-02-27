@@ -6,12 +6,17 @@ import Alert from './components/Alert';
 import Contact from './components/Contact';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-const App = () => {
-  const storedMode = localStorage.getItem('theme');
-  const [mode, setmode] = useState(storedMode);
-  const [alert, setAlert] = useState(false);
+interface AlertTypes {
+  msg: string;
+  type: string;
+}
 
-  const showAlert = (message, type) => {
+const App: React.FC = () => {
+  const storedMode: any = localStorage.getItem('theme');
+  const [mode, setmode] = useState<string>(storedMode);
+  const [alert, setAlert] = useState<AlertTypes | null>(null);
+
+  const showAlert = (message: string, type: string) => {
     setAlert({
       msg: message,
       type: type,
@@ -45,30 +50,24 @@ const App = () => {
   };
 
   return (
-    <>
-      <Router>
-        <Navbar mode={mode} toggleMode={toggleMode} />
-        <Alert alert={alert} />
-        <div className="container my-3">
-          <Routes>
-            <Route
-              path="/home"
-              element={
-                <TextFrom showAlert={showAlert} mode={mode} alert={alert} />
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <TextFrom showAlert={showAlert} mode={mode} alert={alert} />
-              }
-            />
-            <Route exact path="/about" element={<About mode={mode} />} />
-            <Route exact path="/contact" element={<Contact mode={mode} />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <Navbar mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        <Routes>
+          <Route
+            path="/home"
+            element={<TextFrom showAlert={showAlert} mode={mode} />}
+          />
+          <Route
+            path="/"
+            element={<TextFrom showAlert={showAlert} mode={mode} />}
+          />
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

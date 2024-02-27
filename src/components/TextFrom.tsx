@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Swal from 'sweetalert2';
 
-const TextFrom = ({ showAlert, mode, ...props }) => {
-  const [text, setText] = useState('');
-  const [isCopied, setIsCopied] = useState('');
+interface TextFormPropTypes {
+  mode?: string;
+  showAlert: (message: string, type: string) => void | undefined;
+}
+
+const TextFrom: FC<TextFormPropTypes> = ({ showAlert, mode }) => {
+  const [text, setText] = useState<string>('');
+  const [isCopied, setIsCopied] = useState<string>('');
 
   const handleUpperCase = () => {
     let newText = text.toUpperCase();
@@ -40,20 +45,27 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
     showAlert('Text Cleared', 'success');
   };
 
-  const handleCopy = () => {
-    let textarea = document.getElementById('exampleFormControlTextarea1').value;
-    navigator.clipboard.writeText(textarea);
+  const handleCopy = (): void => {
+    let textarea: string | null = (
+      document.getElementById(
+        'exampleFormControlTextarea1'
+      ) as HTMLTextAreaElement
+    )?.value;
+
+    navigator.clipboard.writeText(textarea || '');
+
     if (!textarea) {
       Swal.fire({
         title: 'Error!',
-        text: 'Please write anything to copying text...',
+        text: 'Please write anything to copy text...',
         icon: 'error',
         confirmButtonText: 'Ok',
       });
     } else {
       showAlert('Copied to Clipboard', 'success');
+
       if (isCopied === textarea) {
-        showAlert('Already Copied in Clipboard', 'danger');
+        showAlert('Text Already Copied in Clipboard', 'danger');
       } else {
         setIsCopied(textarea);
       }
@@ -76,7 +88,11 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
   };
 
   const handleTextToSpeech = () => {
-    let textarea = document.getElementById('exampleFormControlTextarea1').value;
+    let textarea: string | null = (
+      document.getElementById(
+        'exampleFormControlTextarea1'
+      ) as HTMLTextAreaElement
+    ).value;
     const utterance = new SpeechSynthesisUtterance(textarea);
     speechSynthesis.speak(utterance);
     if (!text) {
@@ -97,7 +113,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           className="form-control"
           onChange={({ target }) => setText(target.value)}
           id="exampleFormControlTextarea1"
-          rows="10"
+          rows={10}
           placeholder="Enter the text here"
           value={text}
           style={{
@@ -142,7 +158,7 @@ const TextFrom = ({ showAlert, mode, ...props }) => {
           className="form-control"
           onChange={({ target }) => setText(target.value)}
           id="exampleFormControlTextarea1"
-          rows="5"
+          rows={5}
           style={{
             backgroundColor: mode === 'light' ? 'white' : 'lightgray',
             resize: 'none',
