@@ -12,7 +12,7 @@ interface AlertTypes {
 }
 
 const App: React.FC = () => {
-  const storedMode: any = localStorage.getItem('theme');
+  const storedMode: any = localStorage.getItem('theme') || 'light';
   const [mode, setmode] = useState<string>(storedMode);
   const [alert, setAlert] = useState<AlertTypes | null>(null);
 
